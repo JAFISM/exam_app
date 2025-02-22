@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-
-import '../modules/examscreen/bindings/examscreen_binding.dart';
-import '../modules/examscreen/views/examscreen_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 
@@ -17,11 +14,6 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
-    ),
-    GetPage(
-      name: _Paths.EXAMSCREEN,
-      page: () => const ExamscreenView(),
-      binding: ExamscreenBinding(),
     ),
   ];
 }
