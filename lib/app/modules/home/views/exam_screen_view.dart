@@ -9,42 +9,44 @@ class ExamscreenView extends GetView<ExamscreenController> {
   const ExamscreenView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Obx(() {
-        final currentQuestionIndex = controller.currentQuestionIndex.value;
-        final question = controller.exam!.questions[currentQuestionIndex];
+    return SafeArea(
+      child: Scaffold(
+        body: Obx(() {
+          final currentQuestionIndex = controller.currentQuestionIndex.value;
+          final question = controller.exam!.questions[currentQuestionIndex];
 
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(),
-              const SizedBox(height: 16),
-              Text(
-                "Question ${currentQuestionIndex + 1} of ${controller.exam!.questions.length}",
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w500,
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(),
+                const SizedBox(height: 16),
+                Text(
+                  "Question ${currentQuestionIndex + 1} of ${controller.exam!.questions.length}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                question.questionText,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                const SizedBox(height: 12),
+                Text(
+                  question.questionText,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              _buildOptionsList(question),
-              const Spacer(),
-              _buildNavigationButtons(),
-            ],
-          ),
-        );
-      }),
+                const SizedBox(height: 16),
+                _buildOptionsList(question),
+                const Spacer(),
+                _buildNavigationButtons(),
+              ],
+            ),
+          );
+        }),
+      ),
     );
   }
 
@@ -59,7 +61,7 @@ class ExamscreenView extends GetView<ExamscreenController> {
         ),
         Row(
           children: [
-            const Icon(Icons.timer, size: 20, color: Colors.black54),
+            const Icon(Icons.timer_outlined, size: 20, color: Colors.black),
             const SizedBox(width: 5),
             Obx(
               () => Text(
